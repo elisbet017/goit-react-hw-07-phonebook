@@ -7,19 +7,18 @@ export const handleError = (state, { payload }) => {
   state.error = payload;
 };
 
-export const handleGetAllContactsFulfilled = (state, { payload }) => {
+export const handleFulfilled = state => {
   state.isLoading = false;
-  state.items = payload;
-  state.error = null;
-};
-export const handleAddContactFulfilled = (state, { payload }) => {
-  state.isLoading = false;
-  state.items.push(payload);
   state.error = null;
 };
 
+export const handleGetAllContactsFulfilled = (state, { payload }) => {
+  state.items = payload;
+};
+export const handleAddContactFulfilled = (state, { payload }) => {
+  state.items.push(payload);
+};
+
 export const handleDeleteContactFulfilled = (state, { payload }) => {
-  state.isLoading = false;
   state.items = state.items.filter(contact => contact.id !== payload.id);
-  state.error = null;
 };
